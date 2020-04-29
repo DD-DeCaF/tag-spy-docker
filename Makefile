@@ -21,10 +21,12 @@ build:
 		--build-arg BUILD_TIMESTAMP=$(BUILD_TIMESTAMP) \
 		--build-arg TAG_SPY_VERSION=$(TAG_SPY_VERSION) \
 		--tag $(IMAGE):$(TAG_SPY_VERSION)-$(SHORT_COMMIT) \
-		--tag $(IMAGE):$(TAG_SPY_VERSION) .
+		--tag $(IMAGE):$(TAG_SPY_VERSION) \
+		--tag $(IMAGE):latest .
 
 ## Push the Docker image.
 push:
+	docker push $(IMAGE):latest
 	docker push $(IMAGE):$(TAG_SPY_VERSION)
 	docker push $(IMAGE):$(TAG_SPY_VERSION)-$(SHORT_COMMIT)
 
