@@ -1,0 +1,28 @@
+os: linux
+language: shell
+git:
+  depth: 2
+services:
+- docker
+branches:
+  only:
+  - master
+env:
+  global:
+  - IMAGE=dddecaf/tag-spy
+  - BUILD_COMMIT=${TRAVIS_COMMIT}
+  - SHORT_COMMIT=${TRAVIS_COMMIT:0:7}
+  - BUILD_TIMESTAMP=$(date --utc --iso-8601=seconds)
+  - TAG_SPY_VERSION=$(cat VERSION)
+before_install:
+- echo ${DOCKER_PASSWORD} | docker login -u=decaftravis --password-stdin
+install:
+- make build
+script:
+- docker run --rm ${IMAGE}:${TAG_SPY_VERSION} tag-spy --help
+after_success:
+- make push
+notifications:
+  email:
+    on_success: never
+    on_failure: always
