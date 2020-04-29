@@ -19,7 +19,7 @@ docker run --rm tag-spy --help
 As an example, you can get the latest tag for `dddecaf/wsgi-base` via:
 
 ```
-docker run --rm tag-spy dddecaf/wsgi-base alpine dk.dtu.biosustain.wsgi-base.alpine.build.timestamp
+docker run --rm dddecaf/tag-spy:0.1.1 tag-spy dddecaf/wsgi-base alpine dk.dtu.biosustain.wsgi-base.alpine.build.timestamp
 ```
 
 of course, you can pipe the output to a file with `... > <filename>`.
