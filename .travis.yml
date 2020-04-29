@@ -21,7 +21,7 @@ install:
 script:
 - docker run --rm ${IMAGE}:${TAG_SPY_VERSION} tag-spy --help
 after_success:
-- make push
+- if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then make push; fi
 notifications:
   email:
     on_success: never
