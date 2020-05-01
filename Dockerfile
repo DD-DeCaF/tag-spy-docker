@@ -21,10 +21,10 @@ ARG BUILD_COMMIT
 ARG BUILD_TIMESTAMP
 
 LABEL dk.dtu.biosustain.tag-spy.vendor="Novo Nordisk Foundation Center for \
-Biosustainability, Technical University of Denmark" \
-    maintainer="niso@biosustain.dtu.dk" \
-    dk.dtu.biosustain.tag-spy.build.commit="${BUILD_COMMIT}" \
-    dk.dtu.biosustain.tag-spy.build.timestamp="${BUILD_TIMESTAMP}"
+Biosustainability, Technical University of Denmark"
+LABEL maintainer="niso@biosustain.dtu.dk"
+LABEL dk.dtu.biosustain.tag-spy.build.commit="${BUILD_COMMIT}"
+LABEL dk.dtu.biosustain.tag-spy.build.timestamp="${BUILD_TIMESTAMP}"
 
 # Update OpenSSL and certificates.
 RUN apk add --no-cache openssl ca-certificates
