@@ -12,7 +12,6 @@ env:
   - IMAGE=dddecaf/tag-spy
   - BUILD_COMMIT=${TRAVIS_COMMIT}
   - SHORT_COMMIT=${TRAVIS_COMMIT:0:7}
-  - BUILD_TIMESTAMP=$(date --utc --iso-8601=seconds)
   - TAG_SPY_VERSION=$(cat VERSION)
 before_install:
 - echo ${DOCKER_PASSWORD} | docker login -u=decaftravis --password-stdin

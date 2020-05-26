@@ -7,7 +7,6 @@
 IMAGE ?= dddecaf/tag-spy
 BUILD_COMMIT ?= $(shell git rev-parse HEAD)
 SHORT_COMMIT ?= $(shell git rev-parse --short HEAD)
-BUILD_TIMESTAMP ?= $(shell date --utc --iso-8601=seconds)
 TAG_SPY_VERSION ?= $(strip $(shell cat VERSION))
 
 ################################################################################
@@ -18,7 +17,6 @@ TAG_SPY_VERSION ?= $(strip $(shell cat VERSION))
 build:
 	docker pull python:3.7-alpine
 	docker build --build-arg BUILD_COMMIT=$(BUILD_COMMIT) \
-		--build-arg BUILD_TIMESTAMP=$(BUILD_TIMESTAMP) \
 		--build-arg TAG_SPY_VERSION=$(TAG_SPY_VERSION) \
 		--tag $(IMAGE):$(TAG_SPY_VERSION)-$(SHORT_COMMIT) \
 		--tag $(IMAGE):$(TAG_SPY_VERSION) \
